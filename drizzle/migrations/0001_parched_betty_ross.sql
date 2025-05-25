@@ -1,0 +1,1 @@
+ALTER TABLE "video_references" ADD COLUMN "thumnail" varchar(512);

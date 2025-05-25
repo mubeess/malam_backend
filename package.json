@@ -1,0 +1,48 @@
+{
+  "name": "sheik-abubakar-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=dev node --import=tsx --watch --env-file=.env src/index",
+    "prod": "NODE_ENV=prod node --import=tsx --watch --env-file=.env src/index",
+    "build": "tsc --noEmit false || true",
+    "db:generate": "NODE_ENV=dev drizzle-kit generate",
+    "db:migrate": "NODE_ENV=dev drizzle-kit migrate",
+    "db:migrate-stag": "NODE_ENV=stag drizzle-kit migrate",
+    "db:generate-stag": "NODE_ENV=stag drizzle-kit generate",
+    "db:migrate-prod": "NODE_ENV=prod drizzle-kit migrate",
+    "db:generate-prod": "NODE_ENV=prod drizzle-kit generate",
+    "db:studio": "NODE_ENV=dev drizzle-kit studio",
+    "db:studio-stag": "NODE_ENV=stag drizzle-kit studio",
+    "db:studio-prod": "NODE_ENV=prod drizzle-kit studio"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.817.0",
+    "@aws-sdk/lib-storage": "^3.817.0",
+    "@neondatabase/serverless": "^1.0.0",
+    "aws-sdk": "^2.1692.0",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "drizzle-orm": "^0.43.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.0",
+    "multer-s3": "^3.0.1",
+    "pg": "^8.15.6"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.7.10",
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/pg": "^8.11.14",
+    "drizzle-kit": "^0.31.1",
+    "tsx": "^4.19.4"
+  }
+}

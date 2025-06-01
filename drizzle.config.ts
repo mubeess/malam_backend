@@ -2,9 +2,9 @@ import 'dotenv/config';
 import { defineConfig } from 'drizzle-kit';
 const environment = process.env.NODE_ENV || 'dev';
 const databaseUrls: Record<string, string> = {
-  dev: process.env.DEV_DATABASE_URL!,
-  stag: process.env.STAGING_DATABASE_URL!,
-  prod: process.env.PROD_DATABASE_URL!,
+  development: process.env.DEV_DATABASE_URL!,
+  staging: process.env.STAGING_DATABASE_URL!,
+  production: process.env.PROD_DATABASE_URL!,
 };
 
 // Select the appropriate URL based on the environment

@@ -30,7 +30,10 @@ export const createVideo = async (req: Request, res: Response) => {
     return res.status(500).json({ message: 'Server error during video creation' });
   }
 };
-
+function extractNumber(title: string): number {
+  const match = title.match(/^(\d+)/);
+  return match ? parseInt(match[1], 10) : 0;
+}
 export const getVideosByBookId = async (req: Request, res: Response) => {
   try {
     const { bookId } = req.params;
@@ -39,10 +42,14 @@ export const getVideosByBookId = async (req: Request, res: Response) => {
       .select()
       .from(videoSchema)
       .where(eq(videoSchema.bookId, Number(bookId)));
-
+    const sortedVideo = videoList.sort((a, b) => {
+      const numA = extractNumber(a.title);
+      const numB = extractNumber(b.title);
+      return numA - numB;
+    });
     return res.status(200).json({
       message: 'Videos retrieved successfully',
-      videos: videoList,
+      videos: sortedVideo,
     });
   } catch (error) {
     console.error('Get videos by book ID error:', error);

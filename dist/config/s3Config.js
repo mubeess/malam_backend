@@ -22,7 +22,3 @@ const s3 = new client_s3_1.S3Client({
 // });
 // const s3 = new AWS.S3();
 exports.default = s3;
-// S3_BUCKET_NAME=tradely-awsbucket-storage
-// AWS_ACCESS_KEY_ID=AKIAQH3USYF2YMAJXFWG
-// AWS_SECRET_ACCESS_KEY=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
-// AWS_REGION=us-east-1

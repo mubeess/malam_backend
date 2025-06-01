@@ -11,7 +11,7 @@ const environment = process.env.NODE_ENV || 'dev'; // Default to "development" i
 // Database URLs for different environments
 const databaseUrls = {
     dev: process.env.DEV_DATABASE_URL,
-    stag: process.env.STAGING_DATABASE_URL,
+    stage: process.env.STAGING_DATABASE_URL,
     prod: process.env.PROD_DATABASE_URL,
 };
 // Select the appropriate URL based on the environment

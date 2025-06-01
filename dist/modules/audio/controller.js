@@ -26,6 +26,10 @@ const createAudio = async (req, res) => {
     }
 };
 exports.createAudio = createAudio;
+function extractNumber(title) {
+    const match = title.match(/^(\d+)/);
+    return match ? parseInt(match[1], 10) : 0;
+}
 const getAudioByBookId = async (req, res) => {
     try {
         const { bookId } = req.params;
@@ -33,9 +37,15 @@ const getAudioByBookId = async (req, res) => {
             .select()
             .from(audioSchema_1.audioSchema)
             .where((0, drizzle_orm_1.eq)(audioSchema_1.audioSchema.bookId, Number(bookId)));
+        // Sort the audio array by the numeric prefix in title
+        const sortedAudio = audioList.sort((a, b) => {
+            const numA = extractNumber(a.title);
+            const numB = extractNumber(b.title);
+            return numA - numB;
+        });
         return res.status(200).json({
             message: 'Audio retrieved successfully',
-            audio: audioList,
+            audio: sortedAudio,
         });
     }
     catch (error) {

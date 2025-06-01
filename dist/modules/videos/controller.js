@@ -27,6 +27,10 @@ const createVideo = async (req, res) => {
     }
 };
 exports.createVideo = createVideo;
+function extractNumber(title) {
+    const match = title.match(/^(\d+)/);
+    return match ? parseInt(match[1], 10) : 0;
+}
 const getVideosByBookId = async (req, res) => {
     try {
         const { bookId } = req.params;
@@ -34,9 +38,14 @@ const getVideosByBookId = async (req, res) => {
             .select()
             .from(videoSchema_1.videoSchema)
             .where((0, drizzle_orm_1.eq)(videoSchema_1.videoSchema.bookId, Number(bookId)));
+        const sortedVideo = videoList.sort((a, b) => {
+            const numA = extractNumber(a.title);
+            const numB = extractNumber(b.title);
+            return numA - numB;
+        });
         return res.status(200).json({
             message: 'Videos retrieved successfully',
-            videos: videoList,
+            videos: sortedVideo,
         });
     }
     catch (error) {

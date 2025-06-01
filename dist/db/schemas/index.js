@@ -10,9 +10,9 @@ const pg_1 = __importDefault(require("pg"));
 const environment = process.env.NODE_ENV || 'dev'; // Default to "development" if NODE_ENV is not set
 // Database URLs for different environments
 const databaseUrls = {
-    dev: process.env.DEV_DATABASE_URL,
-    stage: process.env.STAGING_DATABASE_URL,
-    prod: process.env.PROD_DATABASE_URL,
+    development: process.env.DEV_DATABASE_URL,
+    staging: process.env.STAGING_DATABASE_URL,
+    production: process.env.PROD_DATABASE_URL,
 };
 // Select the appropriate URL based on the environment
 const dbUrl = databaseUrls[environment];

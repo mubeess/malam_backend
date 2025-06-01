@@ -6,9 +6,9 @@ const environment = process.env.NODE_ENV || 'dev'; // Default to "development" i
 
 // Database URLs for different environments
 const databaseUrls: Record<string, string> = {
-  dev: process.env.DEV_DATABASE_URL!,
-  stage: process.env.STAGING_DATABASE_URL!,
-  prod: process.env.PROD_DATABASE_URL!,
+  development: process.env.DEV_DATABASE_URL!,
+  staging: process.env.STAGING_DATABASE_URL!,
+  production: process.env.PROD_DATABASE_URL!,
 };
 
 // Select the appropriate URL based on the environment

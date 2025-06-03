@@ -7,7 +7,7 @@ import { db } from '../../db/schemas';
 // Get all books with pagination and filters
 export const getAllBooks = async (req: Request, res: Response) => {
   try {
-    const { page = 1, limit = 10, category, language, search } = req.query;
+    const { page = 1, limit = 50, category, language, search } = req.query;
     const offset = (Number(page) - 1) * Number(limit);
 
     let query = db.select().from(books);

@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=dev node --import=tsx --watch --env-file=.env src/index",
-    "prod": "NODE_ENV=prod node --import=tsx --watch --env-file=.env src/index",
+    "dev": "NODE_ENV=development node --import=tsx --watch --env-file=.env src/index",
+    "prod": "NODE_ENV=production node --import=tsx --watch --env-file=.env src/index",
     "build": "tsc --noEmit false || true",
     "db:generate": "NODE_ENV=dev drizzle-kit generate",
     "db:migrate": "NODE_ENV=dev drizzle-kit migrate",

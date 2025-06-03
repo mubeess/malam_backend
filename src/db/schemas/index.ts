@@ -2,7 +2,7 @@ import { drizzle } from 'drizzle-orm/node-postgres';
 import pg from 'pg';
 
 // Determine the current environment
-const environment = process.env.NODE_ENV || 'dev'; // Default to "development" if NODE_ENV is not set
+const environment = process.env.NODE_ENV || 'development'; // Default to "development" if NODE_ENV is not set
 
 // Database URLs for different environments
 const databaseUrls: Record<string, string> = {

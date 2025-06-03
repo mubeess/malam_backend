@@ -173,3 +173,46 @@ export const searchAudio = async (req: Request, res: Response) => {
     return res.status(500).json({ message: 'Server error during audio search' });
   }
 };
+
+export const cleanAudioTitles = async (req: Request, res: Response) => {
+  try {
+    // Get all audio records
+    const audioList = await db.select().from(audioSchema);
+
+    let updatedCount = 0;
+
+    // Process each audio record
+    for (const audio of audioList) {
+      if (audio.title) {
+        // Remove specific phone numbers from title
+        const cleanedTitle = audio.title
+          .replace(/07035887160/g, '')
+          .replace(/08037622649/g, '')
+          .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+          .trim(); // Remove leading/trailing whitespace
+
+        // Only update if the title actually changed
+        if (cleanedTitle !== audio.title) {
+          await db
+            .update(audioSchema)
+            .set({
+              title: cleanedTitle,
+              updatedAt: new Date(),
+            })
+            .where(eq(audioSchema.id, audio.id));
+
+          updatedCount++;
+        }
+      }
+    }
+
+    return res.status(200).json({
+      message: 'Audio titles cleaned successfully',
+      totalRecords: audioList.length,
+      updatedRecords: updatedCount,
+    });
+  } catch (error) {
+    console.error('Clean audio titles error:', error);
+    return res.status(500).json({ message: 'Server error during audio titles cleanup' });
+  }
+};

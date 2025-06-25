@@ -15,6 +15,13 @@
       "when": 1747920413075,
       "tag": "0001_parched_betty_ross",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1750855540593,
+      "tag": "0002_gorgeous_demogoblin",
+      "breakpoints": true
     }
   ]
 }

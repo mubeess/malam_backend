@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { defineConfig } from 'drizzle-kit';
-const environment = process.env.NODE_ENV || 'dev';
+const environment = process.env.NODE_ENV || 'development';
 const databaseUrls: Record<string, string> = {
   development: process.env.DEV_DATABASE_URL!,
   staging: process.env.STAGING_DATABASE_URL!,

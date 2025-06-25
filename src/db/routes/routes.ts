@@ -4,6 +4,7 @@ import booksRouters from '../../modules/books/route';
 import audioRouters from '../../modules/audio/route';
 import videoRouters from '../../modules/videos/route';
 import uploadRouters from '../../modules/upload/route';
+import updateRouters from '../../modules/audio/route';
 
 export const setupRoutes = (app) => {
   app.use('/auth', authRouters);
@@ -11,6 +12,7 @@ export const setupRoutes = (app) => {
   app.use('/audio', audioRouters);
   app.use('/video', videoRouters);
   app.use('/file', uploadRouters);
+  app.use('/updates', updateRouters);
   //   app.use("/profile", profileRouters);
   //   app.use("/rfq", rfqRouters);
 };
